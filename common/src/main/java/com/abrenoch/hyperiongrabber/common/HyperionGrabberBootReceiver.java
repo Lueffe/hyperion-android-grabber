@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 
 import com.abrenoch.hyperiongrabber.common.util.Preferences;
 
@@ -16,6 +16,7 @@ public class HyperionGrabberBootReceiver extends BroadcastReceiver {
             Preferences preferences = new Preferences(context);
             if (preferences.getBoolean(R.string.pref_key_boot)) {
                 final Intent i = new Intent(context, BootActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION
                         |Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
                         |Intent.FLAG_ACTIVITY_NO_HISTORY);

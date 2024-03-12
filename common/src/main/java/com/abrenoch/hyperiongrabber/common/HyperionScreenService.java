@@ -12,9 +12,9 @@ import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
@@ -174,8 +174,8 @@ public class HyperionScreenService extends Service {
                     if (mHyperionThread == null) {
                         boolean isPrepared = prepared();
                         if (isPrepared) {
-                            startScreenRecord(intent);
                             startForeground(NOTIFICATION_ID, getNotification());
+                            startScreenRecord(intent);
 
                             IntentFilter intentFilter = new IntentFilter();
                             intentFilter.addAction(Intent.ACTION_SCREEN_ON);
